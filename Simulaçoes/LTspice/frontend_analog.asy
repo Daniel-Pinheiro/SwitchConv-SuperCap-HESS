@@ -1,0 +1,24 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal -96 -72 96 88
+TEXT 0 -48 Center 2 Filtragem/ADC
+TEXT 0 104 Center 2 FrontEnd Analógico
+WINDOW 0 0 -72 Bottom 2
+PIN -96 32 LEFT 8
+PINATTR PinName I1
+PINATTR SpiceOrder 1
+PIN -96 64 LEFT 8
+PINATTR PinName I2
+PINATTR SpiceOrder 2
+PIN -96 0 LEFT 8
+PINATTR PinName Vo
+PINATTR SpiceOrder 3
+PIN 96 32 RIGHT 8
+PINATTR PinName Id1
+PINATTR SpiceOrder 4
+PIN 96 64 RIGHT 8
+PINATTR PinName Id2
+PINATTR SpiceOrder 5
+PIN 96 0 RIGHT 8
+PINATTR PinName Vd
+PINATTR SpiceOrder 6

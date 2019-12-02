@@ -1,0 +1,37 @@
+#include "Arduino.h"
+
+#define bin2volt(num)  (float)( (num*15)/1024.0 )
+#define volt2bin(num)  (unsigned int)(num*256 / 15)
+
+class DiscreteSystem 
+{
+  float k, a1, a2, b0, b1, b2;
+  float X0, X1, X2, Y0, Y1, Y2;
+
+public:
+  DiscreteSystem(float _a[], float _b[])
+  {
+    k = 1/_a[0];
+    a1 = _a[1];
+    a2 = _a[2];
+    b0 = _b[0];
+    b1 = _b[1];
+    b2 = _b[2];
+  }
+
+  float iterate(float sample)
+  {
+    X2 = X1;
+    X1 = X0;
+    X0 = sample;
+    Y2 = Y1;
+    Y1 = Y0;
+    Y0 = k*( b0*X0 + b1*X1 + b2*X2 - a1*Y1 - a2*Y2 );
+    return Y0;
+  }
+  
+  uint8_t process(float sample)
+  {
+    volt2bin(iterate(sample));
+  }
+};
